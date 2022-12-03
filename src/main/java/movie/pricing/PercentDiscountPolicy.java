@@ -1,12 +1,9 @@
 package movie.pricing;
 
-import movie.DiscountCondition;
-import movie.DiscountPolicy;
-import movie.Money;
-import movie.Screening;
+import movie.*;
 
 
-public class PercentDiscountPolicy extends DiscountPolicy {
+public class PercentDiscountPolicy extends DefaultDiscountPolicy {
     private double percent;
 
     public PercentDiscountPolicy(double percent, DiscountCondition... conditions) {
@@ -17,6 +14,11 @@ public class PercentDiscountPolicy extends DiscountPolicy {
     @Override
     protected Money getDiscountAmount(Screening screening) {
         return screening.getMovieFee().times(percent);
+    }
+
+    @Override
+    public Money calculateDiscountAmount(Screening screening) {
+        return null;
     }
 }
 
